@@ -20,7 +20,18 @@ weui.js 魔改
 git clone https://github.com/xzhih/weui.js.magic.git
 cd weui.js.magic
 yarn 
+```
+
+预览
+
+```bash
 yarn start
+```
+
+图片上传服务器
+
+```bash
+yarn server
 ```
 
 编译
@@ -43,16 +54,21 @@ yarn build
 
 #### import as module
 
+```bash
+yarn add weui
+yarn add https://github.com/xzhih/weui.js.magic
+```
+
 ```javascript
 import 'weui';
-import weui from 'weui.js';
+import weui from 'weui.js.magic';
 
 weui.alert('alert');
 ```
 
 ### 文档
 
-[Documents](https://github.com/xzhih/weui.js.magic/tree/master/docs/README.md)
+[Documents](https://github.com/xzhih/weui.js.magic/blob/magic/docs/README.md)
 
 ### 贡献
 
