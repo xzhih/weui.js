@@ -1,0 +1,17 @@
+<% if(icon !== 'none'){ %>
+<div class="<%= className %>">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon_toast <%= icon %>"></i>
+        <p class="weui-toast__content"><%=content%></p>
+    </div>
+</div>
+<% } %>
+<% if(icon === 'none'){ %>
+<div class="<%= className %>">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast" style="min-height: 0">
+        <p class="weui-toast__content" style="margin: 15px 0"><%=content%></p>
+    </div>
+</div>
+<% } %>
