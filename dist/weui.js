@@ -1,7 +1,7 @@
 /* eslint-disable */
-/*!
+/*! 
  * weui.js.magic v1.2.2 (https://github.com/xzhih/weui.js.magic)
- * Copyright 2019, wechat ui team & xzhih
+ * Copyright 2020, wechat ui team & xzhih
  * MIT license
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -303,17 +303,35 @@ module.exports = "<li class=\"weui-uploader__file weui-uploader__file_status\" d
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "dialog", function() { return /* reexport */ src_dialog_dialog; });
+__webpack_require__.d(__webpack_exports__, "toast", function() { return /* reexport */ src_toast_toast; });
+__webpack_require__.d(__webpack_exports__, "loading", function() { return /* reexport */ src_loading_loading; });
+__webpack_require__.d(__webpack_exports__, "actionSheet", function() { return /* reexport */ src_actionSheet_actionSheet; });
+__webpack_require__.d(__webpack_exports__, "picker", function() { return /* reexport */ picker_picker; });
+__webpack_require__.d(__webpack_exports__, "datePicker", function() { return /* reexport */ datePicker; });
+__webpack_require__.d(__webpack_exports__, "gallery", function() { return /* reexport */ src_gallery_gallery; });
+__webpack_require__.d(__webpack_exports__, "alert", function() { return /* reexport */ src_alert_alert; });
+__webpack_require__.d(__webpack_exports__, "confirm", function() { return /* reexport */ src_confirm_confirm; });
+__webpack_require__.d(__webpack_exports__, "topTips", function() { return /* reexport */ src_topTips_topTips; });
+__webpack_require__.d(__webpack_exports__, "searchBar", function() { return /* reexport */ searchBar_searchBar; });
+__webpack_require__.d(__webpack_exports__, "tab", function() { return /* reexport */ tab_tab; });
+__webpack_require__.d(__webpack_exports__, "form", function() { return /* reexport */ form_form; });
+__webpack_require__.d(__webpack_exports__, "uploader", function() { return /* reexport */ uploader_uploader; });
+__webpack_require__.d(__webpack_exports__, "slider", function() { return /* reexport */ slider_slider; });
 
 // CONCATENATED MODULE: ./node_modules/element-closest/index.mjs
 function polyfill(window) {
-  const ElementPrototype = window.Element.prototype;
+  var ElementPrototype = window.Element.prototype;
 
   if (typeof ElementPrototype.matches !== 'function') {
     ElementPrototype.matches = ElementPrototype.msMatchesSelector || ElementPrototype.mozMatchesSelector || ElementPrototype.webkitMatchesSelector || function matches(selector) {
-      let element = this;
-      const elements = (element.document || element.ownerDocument).querySelectorAll(selector);
-      let index = 0;
+      var element = this;
+      var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+      var index = 0;
 
       while (elements[index] && elements[index] !== element) {
         ++index;
@@ -325,7 +343,7 @@ function polyfill(window) {
 
   if (typeof ElementPrototype.closest !== 'function') {
     ElementPrototype.closest = function closest(selector) {
-      let element = this;
+      var element = this;
 
       while (element && element.nodeType === 1) {
         if (element.matches(selector)) {
@@ -352,7 +370,7 @@ var bala_umd = __webpack_require__(0);
 var bala_umd_default = /*#__PURE__*/__webpack_require__.n(bala_umd);
 
 // CONCATENATED MODULE: ./src/util/util.js
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*
  * Tencent is pleased to support the open source community by making WeUI.js available.
@@ -762,24 +780,24 @@ var sington;
  *
  * @example
  * weui.dialog({
- *     title: 'dialog标题',
- *     content: 'dialog内容',
- *     className: 'custom-classname',
- *     buttons: [{
- *         label: '取消',
- *         type: 'default',
- *         onClick: function () { alert('取消') }
- *     }, {
- *         label: '确定',
- *         type: 'primary',
- *         onClick: function () { alert('确定') }
- *     }]
+ *   title: 'dialog标题',
+ *   content: 'dialog内容',
+ *   className: 'custom-classname',
+ *   buttons: [{
+ *     label: '取消',
+ *     type: 'default',
+ *     onClick: function () { alert('取消') }
+ *   }, {
+ *     label: '确定',
+ *     type: 'primary',
+ *     onClick: function () { alert('确定') }
+ *   }]
  * });
  *
  * // 主动关闭
  * var $dialog = weui.dialog({...});
- * $dialog.hide(function(){
- *      console.log('`dialog` has been hidden');
+ * $dialog.hide(function() {
+ *   console.log('`dialog` has been hidden');
  * });
  */
 
@@ -875,10 +893,10 @@ var toast_sington;
  * @example
  * weui.toast('操作成功', 3000);
  * weui.toast('操作成功', {
- *     duration: 3000,
- *     className: 'custom-classname',
- *     icon: 'none',
- *     callback: function(){ console.log('close') }
+ *   duration: 3000,
+ *   className: 'custom-classname',
+ *   icon: 'none',
+ *   callback: function(){ console.log('close') }
  * });
  */
 
@@ -965,15 +983,17 @@ var loading_sington;
  * @param {string} content loading的文字
  * @param {object=} options 配置项
  * @param {string=} options.className 自定义类名
+ * @param {function=} [options.onShow] 在loading显示的时候回调
  *
  * @example
  * var loading = weui.loading('loading', {
- *     className: 'custom-classname'
+ *   className: 'custom-classname',
+ *     onShow: () => console.log('show')
  * });
  * setTimeout(function () {
- *     loading.hide(function() {
- *          console.log('`loading` has been hidden');
- *      });
+ *   loading.hide(function() {
+ *     console.log('`loading` has been hidden');
+ *   });
  * }, 3000);
  */
 
@@ -1059,34 +1079,34 @@ var actionSheet_sington;
  *
  * @example
  * weui.actionSheet([
- *     {
- *         label: '拍照',
- *         onClick: function () {
- *             console.log('拍照');
- *         }
- *     }, {
- *         label: '从相册选择',
- *         onClick: function () {
- *             console.log('从相册选择');
- *         }
- *     }, {
- *         label: '其他',
- *         onClick: function () {
- *             console.log('其他');
- *         }
+ *   {
+ *     label: '拍照',
+ *     onClick: function () {
+ *       console.log('拍照');
  *     }
+ *   }, {
+ *     label: '从相册选择',
+ *       onClick: function () {
+ *         console.log('从相册选择');
+ *       }
+ *   }, {
+ *     label: '其他',
+ *       onClick: function () {
+ *         console.log('其他');
+ *     }
+ *   }
  * ], [
- *     {
- *         label: '取消',
- *         onClick: function () {
- *             console.log('取消');
- *         }
- *     }
+ *   {
+ *     label: '取消',
+ *       onClick: function () {
+ *         console.log('取消');
+ *       }
+ *   }
  * ], {
- *     className: 'custom-classname',
- *     onClose: function(){
- *         console.log('关闭');
- *     }
+ *   className: 'custom-classname',
+ *   onClose: function(){
+ *     console.log('关闭');
+ *   }
  * });
  */
 
@@ -1180,9 +1200,7 @@ var constraints = [[1, 31], [1, 12], [0, 6]];
  * Schedule
  */
 
-var Schedule =
-/*#__PURE__*/
-function () {
+var Schedule = /*#__PURE__*/function () {
   function Schedule(fields, start, end) {
     _classCallCheck(this, Schedule);
 
@@ -1348,7 +1366,7 @@ function parse(expr, start, end) {
   parse: parse
 });
 // CONCATENATED MODULE: ./src/picker/scroll.js
-function scroll_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { scroll_typeof = function _typeof(obj) { return typeof obj; }; } else { scroll_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return scroll_typeof(obj); }
+function scroll_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { scroll_typeof = function _typeof(obj) { return typeof obj; }; } else { scroll_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return scroll_typeof(obj); }
 
 /*
 * Tencent is pleased to support the open source community by making WeUI.js available.
@@ -1624,17 +1642,17 @@ util.fn.scroll = function scroll(options) {
     });
   }
 };
-// CONCATENATED MODULE: ./src/picker/depthOf.js
+// CONCATENATED MODULE: ./src/picker/util.js
 /*
 * Tencent is pleased to support the open source community by making WeUI.js available.
-*
+* 
 * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-*
+* 
 * Licensed under the MIT License (the "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
-*
+* 
 *       http://opensource.org/licenses/MIT
-*
+* 
 * Unless required by applicable law or agreed to in writing, software distributed under the License is
 * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 * either express or implied. See the License for the specific language governing permissions and
@@ -1649,8 +1667,6 @@ var depthOf = function depthOf(object) {
 
   return depth;
 };
-
-/* harmony default export */ var picker_depthOf = (depthOf);
 // EXTERNAL MODULE: ./src/picker/picker.html
 var picker = __webpack_require__(6);
 var picker_default = /*#__PURE__*/__webpack_require__.n(picker);
@@ -1660,23 +1676,25 @@ var group = __webpack_require__(7);
 var group_default = /*#__PURE__*/__webpack_require__.n(group);
 
 // CONCATENATED MODULE: ./src/picker/picker.js
-function picker_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { picker_typeof = function _typeof(obj) { return typeof obj; }; } else { picker_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return picker_typeof(obj); }
+var picker_this = undefined;
+
+function picker_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { picker_typeof = function _typeof(obj) { return typeof obj; }; } else { picker_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return picker_typeof(obj); }
 
 /*
-* Tencent is pleased to support the open source community by making WeUI.js available.
-*
-* Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-*
-* Licensed under the MIT License (the "License"); you may not use this file except in compliance
-* with the License. You may obtain a copy of the License at
-*
-*       http://opensource.org/licenses/MIT
-*
-* Unless required by applicable law or agreed to in writing, software distributed under the License is
-* distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
-* either express or implied. See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Tencent is pleased to support the open source community by making WeUI.js available.
+ *
+ * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ *
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ *
+ *       http://opensource.org/licenses/MIT
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is
+ * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
 
@@ -1685,7 +1703,7 @@ function picker_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.
 
 
 function Result(item) {
-  if (picker_typeof(item) !== 'object') {
+  if (picker_typeof(item) !== "object") {
     item = {
       label: item,
       value: item
@@ -1695,12 +1713,12 @@ function Result(item) {
   util.extend(this, item);
 }
 
-Result.prototype.toString = function toString() {
-  return this.value;
+Result.prototype.toString = function () {
+  return picker_this.value;
 };
 
-Result.prototype.valueOf = function valueOf() {
-  return this.value;
+Result.prototype.valueOf = function () {
+  return picker_this.value;
 };
 
 var picker_sington;
@@ -1713,6 +1731,8 @@ var temp = {}; // temp 存在上一次滑动的位置
  * @param {number=} [options.depth] picker深度(也就是picker有多少列) 取值为1-3。如果为空，则取items第一项的深度。
  * @param {string=} [options.id=default] 作为picker的唯一标识，作用是以id缓存当时的选择。（当你想每次传入的defaultValue都是不一样时，可以使用不同的id区分）
  * @param {string=} [options.className] 自定义类名
+ * @param {string=} [options.title] 自定义标题
+ * @param {string=} [options.desc] 自定义描述
  * @param {string=} [options.container] 指定容器
  * @param {array=} [options.defaultValue] 默认选项的value数组
  * @param {function=} [options.onChange] 在picker选中的值发生变化的时候回调
@@ -1858,11 +1878,11 @@ function picker_picker() {
 
   var options = (_ref = arguments.length - 1, _ref < 0 || arguments.length <= _ref ? undefined : arguments[_ref]);
   var defaults = util.extend({
-    id: 'default',
-    className: '',
-    container: 'body',
-    title: '',
-    onOpen: util.noop,
+    id: "default",
+    className: "",
+    container: "body",
+    title: "",
+    desc: "",
     onChange: util.noop,
     onConfirm: util.noop,
     onClose: util.noop
@@ -1872,10 +1892,13 @@ function picker_picker() {
   var isMulti = false; // 是否多列的类型
 
   if (arguments.length > 2) {
+    var i = 0;
     items = [];
 
-    for (var i = 0; i < arguments.length - 1; i++) {
-      items.push(i < 0 || arguments.length <= i ? undefined : arguments[i]);
+    while (i < arguments.length - 1) {
+      var _i;
+
+      items.push((_i = i++, _i < 0 || arguments.length <= _i ? undefined : arguments[_i]));
     }
 
     isMulti = true;
@@ -1888,26 +1911,25 @@ function picker_picker() {
   var result = [];
   var lineTemp = temp[defaults.id];
   var $picker = util(util.render(picker_default.a, defaults));
-  var depth = options.depth || (isMulti ? items.length : picker_depthOf(items[0]));
-  var groups = ''; // 显示与隐藏的方法
+  var depth = options.depth || (isMulti ? items.length : depthOf(items[0]));
+  var groups = ""; // 显示与隐藏的方法
 
   function show() {
-    defaults.onOpen();
     util(defaults.container).append($picker); // 这里获取一下计算后的样式，强制触发渲染. fix IOS10下闪现的问题
 
-    util.getStyle($picker[0], 'transform'); // 更改标题
+    util.getStyle($picker[0], "transform"); // 更改标题
 
-    $picker.find('.weui-half-screen-dialog__title').html(defaults.title);
-    $picker.find('.weui-mask').addClass('weui-animate-fade-in');
-    $picker.find('.weui-picker').addClass('weui-animate-slide-up');
+    $picker.find(".weui-half-screen-dialog__title").html(defaults.title);
+    $picker.find(".weui-mask").addClass("weui-animate-fade-in");
+    $picker.find(".weui-picker").addClass("weui-animate-slide-up");
   }
 
   function nHide(callback) {
     // eslint-disable-next-line no-func-assign
     nHide = util.noop; // 防止二次调用导致报错
 
-    $picker.find('.weui-mask').addClass('weui-animate-fade-out');
-    $picker.find('.weui-picker').addClass('weui-animate-slide-down').on('animationend webkitAnimationEnd', function () {
+    $picker.find(".weui-mask").addClass("weui-animate-fade-out");
+    $picker.find(".weui-picker").addClass("weui-animate-slide-down").on("animationend webkitAnimationEnd", function () {
       $picker.remove();
       picker_sington = false;
       defaults.onClose();
@@ -1927,12 +1949,12 @@ function picker_picker() {
       var index = 0;
       var len = items.length;
 
-      if (picker_typeof(items[index]) === 'object') {
-        for (; index < len; index += 1) {
+      if (picker_typeof(items[index]) === "object") {
+        for (; index < len; ++index) {
           if (defaultVal === items[index].value) break;
         }
       } else {
-        for (; index < len; index += 1) {
+        for (; index < len; ++index) {
           if (defaultVal === items[index]) break;
         }
       }
@@ -1944,7 +1966,7 @@ function picker_picker() {
       }
     }
 
-    $picker.find('.weui-picker__group').eq(level).scroll({
+    $picker.find(".weui-picker__group").eq(level).scroll({
       items: items,
       temp: lineTemp[level],
       onChange: function onChange(item, index) {
@@ -1957,8 +1979,10 @@ function picker_picker() {
 
         lineTemp[level] = index;
 
-        if (isMulti && result.length === depth) {
-          defaults.onChange(result);
+        if (isMulti) {
+          if (result.length === depth) {
+            defaults.onChange(result);
+          }
         } else {
           /**
            * @子列表处理
@@ -1969,22 +1993,22 @@ function picker_picker() {
            * 1. 因为滑动实际上是一层一层传递的：父列表滚动完成之后，会call子列表的onChange，从而带动子列表的滑动。
            * 2. 所以，使用者的传进来onChange回调应该在最后一个子列表滑动时再call
            */
+          // eslint-disable-next-line no-lonely-if
           if (item.children && item.children.length > 0) {
-            $picker.find('.weui-picker__group').eq(level + 1).show(); // 不是多列的情况下才继续处理children
+            $picker.find(".weui-picker__group").eq(level + 1).show(); // 不是多列的情况下才继续处理children
 
             if (!isMulti) scroll(item.children, level + 1);
-            return;
-          } // 如果子列表test不通过，子孙列表都隐藏。
-
-
-          var $items = $picker.find('.weui-picker__group');
-          $items.forEach(function (ele, index) {
-            if (index > level) {
-              util(ele).hide();
-            }
-          });
-          result.splice(level + 1);
-          defaults.onChange(result);
+          } else {
+            // 如果子列表test不通过，子孙列表都隐藏。
+            var $items = $picker.find(".weui-picker__group");
+            $items.forEach(function (ele, index) {
+              if (index > level) {
+                util(ele).hide();
+              }
+            });
+            result.splice(level + 1);
+            defaults.onChange(result);
+          }
         }
       },
       onConfirm: defaults.onConfirm
@@ -1995,7 +2019,7 @@ function picker_picker() {
     groups += group_default.a;
   }
 
-  $picker.find('.weui-picker__bd').html(groups);
+  $picker.find(".weui-picker__bd").html(groups);
   show();
 
   if (isMulti) {
@@ -2006,11 +2030,11 @@ function picker_picker() {
     scroll(items, 0);
   }
 
-  $picker.on('click', '.weui-mask', function () {
+  $picker.on("click", ".weui-mask", function () {
     hide();
-  }).on('click', '.weui-picker__btn', function () {
+  }).on("click", ".weui-picker__btn", function () {
     hide();
-  }).on('click', '#weui-picker-confirm', function () {
+  }).on("click", "#weui-picker-confirm", function () {
     defaults.onConfirm(result);
   });
   picker_sington = $picker[0];
@@ -2091,26 +2115,25 @@ function picker_picker() {
 function datePicker(options) {
   var nowDate = new Date();
   var defaults = util.extend({
-    id: 'datePicker',
-    onOpen: util.noop,
+    id: "datePicker",
     onChange: util.noop,
     onConfirm: util.noop,
     start: nowDate.getFullYear() - 20,
     end: nowDate.getFullYear() + 20,
     defaultValue: [nowDate.getFullYear(), nowDate.getMonth() + 1, nowDate.getDate()],
-    cron: '* * *'
+    cron: "* * *"
   }, options); // 兼容原来的 start、end 传 Number 的用法
 
-  if (typeof defaults.start === 'number') {
+  if (typeof defaults.start === "number") {
     defaults.start = new Date("".concat(defaults.start, "/01/01"));
-  } else if (typeof defaults.start === 'string') {
-    defaults.start = new Date(defaults.start.replace(/-/g, '/'));
+  } else if (typeof defaults.start === "string") {
+    defaults.start = new Date(defaults.start.replace(/-/g, "/"));
   }
 
-  if (typeof defaults.end === 'number') {
+  if (typeof defaults.end === "number") {
     defaults.end = new Date("".concat(defaults.end, "/12/31"));
-  } else if (typeof defaults.end === 'string') {
-    defaults.end = new Date(defaults.end.replace(/-/g, '/'));
+  } else if (typeof defaults.end === "string") {
+    defaults.end = new Date(defaults.end.replace(/-/g, "/"));
   }
 
   var findBy = function findBy(array, key, value) {
@@ -2132,7 +2155,7 @@ function datePicker(options) {
     var year = obj.value.getFullYear();
     var month = obj.value.getMonth() + 1;
     var day = obj.value.getDate();
-    var Y = findBy(date, 'value', year);
+    var Y = findBy(date, "value", year);
 
     if (!Y) {
       Y = {
@@ -2143,7 +2166,7 @@ function datePicker(options) {
       date.push(Y);
     }
 
-    var M = findBy(Y.children, 'value', month);
+    var M = findBy(Y.children, "value", month);
 
     if (!M) {
       M = {
@@ -2196,12 +2219,12 @@ var gallery_sington;
  *
  * @example
  * var gallery = weui.gallery(url, {
- *     className: 'custom-classname',
- *     onDelete: function(){
- *         if(confirm('确定删除该图片？')){ console.log('删除'); }
- *         gallery.hide(function() {
- *              console.log('`gallery` has been hidden');
- *          });
+ *   className: 'custom-classname',
+ *   onDelete: function() {
+ *     if (confirm('确定删除该图片？')){ console.log('删除'); }
+ *       gallery.hide(function() {
+ *         console.log('`gallery` has been hidden');
+ *       });
  *     }
  * });
  */
@@ -2251,23 +2274,23 @@ function gallery_gallery(url) {
 
 /* harmony default export */ var src_gallery_gallery = (gallery_gallery);
 // CONCATENATED MODULE: ./src/alert/alert.js
-function alert_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { alert_typeof = function _typeof(obj) { return typeof obj; }; } else { alert_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return alert_typeof(obj); }
+function alert_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { alert_typeof = function _typeof(obj) { return typeof obj; }; } else { alert_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return alert_typeof(obj); }
 
 /*
-* Tencent is pleased to support the open source community by making WeUI.js available.
-*
-* Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-*
-* Licensed under the MIT License (the "License"); you may not use this file except in compliance
-* with the License. You may obtain a copy of the License at
-*
-*       http://opensource.org/licenses/MIT
-*
-* Unless required by applicable law or agreed to in writing, software distributed under the License is
-* distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
-* either express or implied. See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Tencent is pleased to support the open source community by making WeUI.js available.
+ *
+ * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+ *
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ *
+ *       http://opensource.org/licenses/MIT
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is
+ * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 
 /**
@@ -2281,29 +2304,40 @@ function alert_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.i
  *
  * @example
  * weui.alert('普通的alert');
- * weui.alert('带回调的alert', function(){ console.log('ok') });
- * var alertDom = weui.alert('手动关闭的alert', function(){
- *     return false; // 不关闭弹窗，可用alertDom.hide()来手动关闭
+ *
+ * weui.alert('带回调的alert', function () {
+ *   console.log('ok')
  * });
- * weui.alert('自定义标题的alert', { title: '自定义标题' });
- * weui.alert('带回调的自定义标题的alert', function(){
- *    console.log('ok')
+ *
+ * var alertDom = weui.alert('手动关闭的alert', function () {
+ *   return false; // 不关闭弹窗，可用alertDom.hide()来手动关闭
+ * });
+ *
+ * weui.alert('自定义标题的alert', {
+ *   title: '自定义标题'
+ * });
+ *
+ * weui.alert('带回调的自定义标题的alert', function () {
+ *   console.log('ok')
  * }, {
- *    title: '自定义标题'
+ *   title: '自定义标题'
  * });
+ *
  * weui.alert('自定义按钮的alert', {
- *     title: '自定义按钮的alert',
- *     buttons: [{
- *         label: 'OK',
- *         type: 'primary',
- *         onClick: function(){ console.log('ok') }
- *     }]
+ *   title: '自定义按钮的alert',
+ *   buttons: [{
+ *     label: 'OK',
+ *     type: 'primary',
+ *     onClick: function () {
+ *       console.log('ok')
+ *     }
+ *   }]
  * });
  *
  * // 多次使用
  * var alert = weui.alert('hello');
- * alert.hide(function(){
- *     weui.alert('world');
+ * alert.hide(function () {
+ *   weui.alert('world');
  * });
  */
 
@@ -2330,7 +2364,7 @@ function alert_alert() {
 
 /* harmony default export */ var src_alert_alert = (alert_alert);
 // CONCATENATED MODULE: ./src/confirm/confirm.js
-function confirm_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { confirm_typeof = function _typeof(obj) { return typeof obj; }; } else { confirm_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return confirm_typeof(obj); }
+function confirm_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { confirm_typeof = function _typeof(obj) { return typeof obj; }; } else { confirm_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return confirm_typeof(obj); }
 
 /*
 * Tencent is pleased to support the open source community by making WeUI.js available.
@@ -2364,22 +2398,22 @@ function confirm_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol
  * weui.confirm('自定义标题的confirm', { title: '自定义标题' });
  * weui.confirm('带回调的confirm', function(){ console.log('yes') }, function(){ console.log('no') });
  * var confirmDom = weui.confirm('手动关闭的confirm', function(){
- *     return false; // 不关闭弹窗，可用confirmDom.hide()来手动关闭
+ *   return false; // 不关闭弹窗，可用confirmDom.hide()来手动关闭
  * });
  * weui.confirm('带回调的自定义标题的confirm', function(){ console.log('yes') }, function(){ console.log('no') }, {
- *     title: '自定义标题'
+ *   title: '自定义标题'
  * });
  * weui.confirm('自定义按钮的confirm', {
- *     title: '自定义按钮的confirm',
- *     buttons: [{
- *         label: 'NO',
- *         type: 'default',
- *         onClick: function(){ console.log('no') }
- *     }, {
- *         label: 'YES',
- *         type: 'primary',
- *         onClick: function(){ console.log('yes') }
- *     }]
+ *   title: '自定义按钮的confirm',
+ *   buttons: [{
+ *     abel: 'NO',
+ *     type: 'default',
+ *     onClick: function(){ console.log('no') }
+ *   }, {
+ *     label: 'YES',
+ *     type: 'primary',
+ *     onClick: function(){ console.log('yes') }
+ *   }]
  * });
  */
 
@@ -2449,15 +2483,15 @@ var nToptips = null;
  * weui.topTips('请填写正确的字段', 3000);
  * weui.topTips('请填写正确的字段', function(){ console.log('close') });
  * weui.topTips('请填写正确的字段', {
- *     duration: 3000,
- *     className: 'custom-classname',
- *     callback: function(){ console.log('close') }
+ *   duration: 3000,
+ *   className: 'custom-classname',
+ *   callback: function(){ console.log('close') }
  * });
  *
  * // 主动关闭
  * var $topTips = weui.topTips('请填写正确的字段');
  * $topTips.hide(function() {
- *      console.log('`topTips` has been hidden');
+ *    console.log('`topTips` has been hidden');
  * });
  */
 
@@ -2641,10 +2675,10 @@ function searchBar(selector) {
  * #### js
  * ```javascript
  * weui.tab('#tab',{
- *     defaultIndex: 0,
- *     onChange: function(index){
- *         console.log(index);
- *     }
+ *   defaultIndex: 0,
+ *   onChange: function(index){
+ *     console.log(index);
+ *   }
  * });
  * ```
  */
@@ -2824,19 +2858,19 @@ function nValidate($input, $form, regexp) {
  * ``` js
  * // weui.form.validate('#form', function(error){ console.log(error);}); // error: {dom:[Object], msg:[String]}
  * weui.form.validate('#form', function (error) {
- *     if (!error) {
- *         var loading = weui.loading('提交中...');
- *         setTimeout(function () {
- *             loading.hide();
- *             weui.toast('提交成功', 3000);
- *         }, 1500);
- *     }
- *     // return true; // 当return true时，不会显示错误
+ *   if (!error) {
+ *     var loading = weui.loading('提交中...');
+ *     setTimeout(function () {
+ *       loading.hide();
+ *       weui.toast('提交成功', 3000);
+ *     }, 1500);
+ *   }
+ *   // return true; // 当return true时，不会显示错误
  * }, {
- *     regexp: {
- *         IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
- *         VCODE: /^.{4}$/
- *     }
+ *   regexp: {
+ *     IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
+ *     VCODE: /^.{4}$/
+ *   }
  * });
  * ```
  */
@@ -2877,10 +2911,10 @@ function validate(selector) {
  *
  * @example
  * weui.form.checkIfBlur('#form', {
- *     regexp: {
- *         IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
- *         VCODE: /^.{4}$/
- *     }
+ *   regexp: {
+ *     IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
+ *     VCODE: /^.{4}$/
+ *   }
  * });
  */
 
@@ -2920,8 +2954,8 @@ function checkIfBlur(selector) {
  *
  * @example
  * weui.form.showErrorTips({
- *     ele: document.getElementById("xxxInput")
- *     msg: 'empty'
+ *   ele: document.getElementById("xxxInput")
+ *   msg: 'empty'
  * });
  */
 
@@ -3310,7 +3344,7 @@ function upload(options) {
 * Licensed under the MIT License (the "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
 *
-*       http://opensource.org/licenses/MIT
+*        http://opensource.org/licenses/MIT
 *
 * Unless required by applicable law or agreed to in writing, software distributed under the License is
 * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
@@ -3368,69 +3402,68 @@ var nId = 0;
  * ```javascript
  * var uploadCount = 0;
  * weui.uploader('#uploader', {
- *    url: 'http://localhost:8081',
- *    auto: true,
- *    type: 'file',
- *    fileVal: 'fileVal',
- *    compress: {
- *        width: 1600,
- *        height: 1600,
- *        quality: .8
- *    },
- *    onBeforeQueued: function(files) {
- *        // `this` 是轮询到的文件, `files` 是所有文件
+ *   url: 'http://localhost:8081',
+ *   auto: true,
+ *   type: 'file',
+ *   fileVal: 'fileVal',
+ *   compress: {
+ *     width: 1600,
+ *     height: 1600,
+ *     quality: .8
+ *   },
+ *   onBeforeQueued: function(files) {
+ *     // `this` 是轮询到的文件, `files` 是所有文件
+ *     if (["image/jpg", "image/jpeg", "image/png", "image/gif"].indexOf(this.type) < 0){
+ *       weui.alert('请上传图片');
+ *         return false; // 阻止文件添加
+ *       }
+ *       if (this.size > 10 * 1024 * 1024){
+ *         weui.alert('请上传不超过10M的图片');
+ *         return false;
+ *       }
+ *       if (files.length > 5) { // 防止一下子选择过多文件
+ *         weui.alert('最多只能上传5张图片，请重新选择');
+ *         return false;
+ *       }
+ *       if (uploadCount + 1 > 5) {
+ *         weui.alert('最多只能上传5张图片');
+ *         return false;
+ *       }
  *
- *        if(["image/jpg", "image/jpeg", "image/png", "image/gif"].indexOf(this.type) < 0){
- *            weui.alert('请上传图片');
- *            return false; // 阻止文件添加
- *        }
- *        if(this.size > 10 * 1024 * 1024){
- *            weui.alert('请上传不超过10M的图片');
- *            return false;
- *        }
- *        if (files.length > 5) { // 防止一下子选择过多文件
- *            weui.alert('最多只能上传5张图片，请重新选择');
- *            return false;
- *        }
- *        if (uploadCount + 1 > 5) {
- *            weui.alert('最多只能上传5张图片');
- *            return false;
- *        }
+ *       ++uploadCount;
  *
- *        ++uploadCount;
+ *       // return true; // 阻止默认行为，不插入预览图的框架
+ *   },
+ *   onQueued: function(){
+ *     console.log(this);
  *
- *        // return true; // 阻止默认行为，不插入预览图的框架
- *    },
- *    onQueued: function(){
- *        console.log(this);
+ *     // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
+ *     // console.log(this.base64); // 如果是base64上传，file.base64可以获得文件的base64
  *
- *        // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
- *        // console.log(this.base64); // 如果是base64上传，file.base64可以获得文件的base64
+ *     // this.upload(); // 如果是手动上传，这里可以通过调用upload来实现；也可以用它来实现重传。
+ *     // this.stop(); // 中断上传
  *
- *        // this.upload(); // 如果是手动上传，这里可以通过调用upload来实现；也可以用它来实现重传。
- *        // this.stop(); // 中断上传
+ *     // return true; // 阻止默认行为，不显示预览图的图像
+ *   },
+ *   onBeforeSend: function(data, headers){
+ *     console.log(this, data, headers);
+ *     // $.extend(data, { test: 1 }); // 可以扩展此对象来控制上传参数
+ *     // $.extend(headers, { Origin: 'http://127.0.0.1' }); // 可以扩展此对象来控制上传头部
  *
- *        // return true; // 阻止默认行为，不显示预览图的图像
- *    },
- *    onBeforeSend: function(data, headers){
- *        console.log(this, data, headers);
- *        // $.extend(data, { test: 1 }); // 可以扩展此对象来控制上传参数
- *        // $.extend(headers, { Origin: 'http://127.0.0.1' }); // 可以扩展此对象来控制上传头部
- *
- *        // return false; // 阻止文件上传
- *    },
- *    onProgress: function(percent){
- *        console.log(this, percent);
- *        // return true; // 阻止默认行为，不使用默认的进度显示
- *    },
- *    onSuccess: function (ret) {
- *        console.log(this, ret);
- *        // return true; // 阻止默认行为，不使用默认的成功态
- *    },
- *    onError: function(err){
- *        console.log(this, err);
- *        // return true; // 阻止默认行为，不使用默认的失败态
- *    }
+ *     // return false; // 阻止文件上传
+ *   },
+ *   onProgress: function(percent){
+ *     console.log(this, percent);
+ *     // return true; // 阻止默认行为，不使用默认的进度显示
+ *   },
+ *   onSuccess: function (ret) {
+ *     console.log(this, ret);
+ *     // return true; // 阻止默认行为，不使用默认的成功态
+ *   },
+ *   onError: function(err){
+ *     console.log(this, err);
+ *     // return true; // 阻止默认行为，不使用默认的失败态
+ *   }
  * });
  * ```
  */
@@ -3662,11 +3695,11 @@ function uploader(selector, options) {
  * #### js
  * ```javascript
  * weui.slider('#slider', {
- *     step: 10,
- *     defaultValue: 40,
- *     onChange: function(percent){
- *         console.log(percent);
- *     }
+ *   step: 10,
+ *   defaultValue: 40,
+ *   onChange: function(percent){
+ *     console.log(percent);
+ *   }
  * });
  * ```
  */
@@ -3767,21 +3800,6 @@ function slider(selector) {
 
 /* harmony default export */ var slider_slider = (slider);
 // CONCATENATED MODULE: ./src/weui.js
-/* concated harmony reexport dialog */__webpack_require__.d(__webpack_exports__, "dialog", function() { return src_dialog_dialog; });
-/* concated harmony reexport toast */__webpack_require__.d(__webpack_exports__, "toast", function() { return src_toast_toast; });
-/* concated harmony reexport loading */__webpack_require__.d(__webpack_exports__, "loading", function() { return src_loading_loading; });
-/* concated harmony reexport actionSheet */__webpack_require__.d(__webpack_exports__, "actionSheet", function() { return src_actionSheet_actionSheet; });
-/* concated harmony reexport picker */__webpack_require__.d(__webpack_exports__, "picker", function() { return picker_picker; });
-/* concated harmony reexport datePicker */__webpack_require__.d(__webpack_exports__, "datePicker", function() { return datePicker; });
-/* concated harmony reexport gallery */__webpack_require__.d(__webpack_exports__, "gallery", function() { return src_gallery_gallery; });
-/* concated harmony reexport alert */__webpack_require__.d(__webpack_exports__, "alert", function() { return src_alert_alert; });
-/* concated harmony reexport confirm */__webpack_require__.d(__webpack_exports__, "confirm", function() { return src_confirm_confirm; });
-/* concated harmony reexport topTips */__webpack_require__.d(__webpack_exports__, "topTips", function() { return src_topTips_topTips; });
-/* concated harmony reexport searchBar */__webpack_require__.d(__webpack_exports__, "searchBar", function() { return searchBar_searchBar; });
-/* concated harmony reexport tab */__webpack_require__.d(__webpack_exports__, "tab", function() { return tab_tab; });
-/* concated harmony reexport form */__webpack_require__.d(__webpack_exports__, "form", function() { return form_form; });
-/* concated harmony reexport uploader */__webpack_require__.d(__webpack_exports__, "uploader", function() { return uploader_uploader; });
-/* concated harmony reexport slider */__webpack_require__.d(__webpack_exports__, "slider", function() { return slider_slider; });
 /*
 * Tencent is pleased to support the open source community by making WeUI.js available.
 *
@@ -3811,8 +3829,7 @@ function slider(selector) {
 
 
 
-
-/* harmony default export */ var weui = __webpack_exports__["default"] = ({
+var weui = {
   dialog: src_dialog_dialog,
   toast: src_toast_toast,
   loading: src_loading_loading,
@@ -3828,7 +3845,9 @@ function slider(selector) {
   form: form_form,
   uploader: uploader_uploader,
   slider: slider_slider
-});
+};
+/* harmony default export */ var src_weui = __webpack_exports__["default"] = (weui);
+
 
 /***/ })
 /******/ ]);
