@@ -461,7 +461,7 @@ document.querySelector('#uploaderFiles').addEventListener('click', (e) => {
         uploadCount -= 1
         uploadCountDom.innerHTML = uploadCount
 
-        for (let i = 0, len = uploadList.length; i < len; i += 1) {
+        for (let i = 0, len = uploadList.length; i < len; i++) {
           let file = uploadList[i]
           if (file.id === id) {
             file.stop()
@@ -514,7 +514,7 @@ document.querySelector('#uploaderCustomFiles').addEventListener('click', (e) => 
     onDelete() {
       weui.confirm('确定删除该图片？', () => {
         let index
-        for (let i = 0, len = uploadCustomFileList.length; i < len; i += 1) {
+        for (let i = 0, len = uploadCustomFileList.length; i < len; i++) {
           let file = uploadCustomFileList[i]
           if (file.id === id) {
             index = i

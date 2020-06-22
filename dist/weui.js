@@ -1,5 +1,5 @@
 /* eslint-disable */
-/*! 
+/*!
  * weui.js.magic v1.2.2 (https://github.com/xzhih/weui.js.magic)
  * Copyright 2019, wechat ui team & xzhih
  * MIT license
@@ -1304,7 +1304,7 @@ function parseField(field, constraints) {
 
   var fields = field.split(',');
 
-  for (var i = 0, len = fields.length; i < len; i += 1) {
+  for (var i = 0, len = fields.length; i < len; i++) {
     var f = fields[i];
 
     if (f.match(regex)) {
@@ -1874,7 +1874,7 @@ function picker_picker() {
   if (arguments.length > 2) {
     items = [];
 
-    for (var i = 0; i < arguments.length - 1; i += 1) {
+    for (var i = 0; i < arguments.length - 1; i++) {
       items.push(i < 0 || arguments.length <= i ? undefined : arguments[i]);
     }
 
@@ -2114,7 +2114,7 @@ function datePicker(options) {
   }
 
   var findBy = function findBy(array, key, value) {
-    for (var i = 0, len = array.length; i < len; i += 1) {
+    for (var i = 0, len = array.length; i < len; i++) {
       var _obj = array[i];
 
       if (_obj[key] === value) {
@@ -2714,7 +2714,7 @@ function nValidate($input, $form, regexp) {
     if (input.type === 'radio') {
       var radioInputs = $form.find("input[type=\"radio\"][name=\"".concat(input.name, "\"]"));
 
-      for (var i = 0, len = radioInputs.length; i < len; i += 1) {
+      for (var i = 0, len = radioInputs.length; i < len; i++) {
         if (radioInputs[i].checked) return null;
       }
 
@@ -2851,7 +2851,7 @@ function validate(selector) {
     var $requireds = $form.find('[required]');
     if (typeof callback !== 'function') callback = showErrorTips;
 
-    for (var i = 0, len = $requireds.length; i < len; i += 1) {
+    for (var i = 0, len = $requireds.length; i < len; i++) {
       var $required = $requireds.eq(i);
       var errorMsg = nValidate($required, $form, options.regexp);
       var error = {
@@ -3031,7 +3031,7 @@ function dataURItoBuffer(dataURI) {
   var buffer = new ArrayBuffer(byteString.length);
   var view = new Uint8Array(buffer);
 
-  for (var i = 0; i < byteString.length; i += 1) {
+  for (var i = 0; i < byteString.length; i++) {
     view[i] = byteString.charCodeAt(i);
   }
 
@@ -3069,7 +3069,7 @@ function getOrientation(buffer) {
       var tags = view.getUint16(offset, little);
       offset += 2;
 
-      for (var i = 0; i < tags; i += 1) {
+      for (var i = 0; i < tags; i++) {
         if (view.getUint16(offset + i * 12, little) === 0x0112) {
           return view.getUint16(offset + i * 12 + 8, little);
         }

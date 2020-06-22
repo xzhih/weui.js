@@ -58,7 +58,7 @@ function dataURItoBuffer(dataURI) {
   let byteString = atob(dataURI.split(',')[1])
   let buffer = new ArrayBuffer(byteString.length)
   let view = new Uint8Array(buffer)
-  for (let i = 0; i < byteString.length; i += 1) {
+  for (let i = 0; i < byteString.length; i++) {
     view[i] = byteString.charCodeAt(i)
   }
   return buffer
@@ -88,7 +88,7 @@ function getOrientation(buffer) {
       offset += view.getUint32(offset + 4, little)
       let tags = view.getUint16(offset, little)
       offset += 2
-      for (let i = 0; i < tags; i += 1) {
+      for (let i = 0; i < tags; i++) {
         if (view.getUint16(offset + (i * 12), little) === 0x0112) { return view.getUint16(offset + (i * 12) + 8, little) }
       }
     } else if ((marker & 0xFF00) !== 0xFF00) break

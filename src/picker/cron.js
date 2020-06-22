@@ -133,7 +133,7 @@ function parseField(field, constraints) {
 
   // 处理 1,2,5-9 这种情况
   const fields = field.split(',')
-  for (let i = 0, len = fields.length; i < len; i += 1) {
+  for (let i = 0, len = fields.length; i < len; i++) {
     const f = fields[i]
     if (f.match(regex)) {
       f.replace(regex, (_$0, lower, upper, step) => {
