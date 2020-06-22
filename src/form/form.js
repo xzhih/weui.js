@@ -31,7 +31,7 @@ function nValidate($input, $form, regexp) {
 
     if (input.type === 'radio') {
       const radioInputs = $form.find(`input[type="radio"][name="${input.name}"]`)
-      for (let i = 0, len = radioInputs.length; i < len; i += 1) {
+      for (let i = 0, len = radioInputs.length; i < len; i++) {
         if (radioInputs[i].checked) return null
       }
       return 'empty'
@@ -152,7 +152,7 @@ function validate(selector, callback = $.noop, options = {}) {
     const $requireds = $form.find('[required]')
     if (typeof callback !== 'function') callback = showErrorTips
 
-    for (let i = 0, len = $requireds.length; i < len; i += 1) {
+    for (let i = 0, len = $requireds.length; i < len; i++) {
       const $required = $requireds.eq(i); const errorMsg = nValidate($required, $form, options.regexp); const
         error = { ele: $required[0], msg: errorMsg }
       if (errorMsg) {
