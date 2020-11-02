@@ -272,7 +272,7 @@ module.exports = "<div class=\"<% if(isAndroid){ %>weui-skin_android <% } %><%= 
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = " <div class=\"<%= className %>\"> <div class=weui-mask></div> <div class=\"weui-half-screen-dialog weui-picker\"> <div class=weui-half-screen-dialog__hd> <div class=weui-half-screen-dialog__hd__side> <button class=\"weui-icon-btn weui-icon-btn_close weui-picker__btn\">关闭</button> </div> <div class=weui-half-screen-dialog__hd__main> <strong class=weui-half-screen-dialog__title>标题</strong> </div> </div> <div class=weui-half-screen-dialog__bd> <div class=weui-picker__bd></div> </div> <div class=weui-half-screen-dialog__ft> <a href=javascript:; class=\"weui-btn weui-btn_primary weui-picker__btn\" id=weui-picker-confirm data-action=select>确定</a> </div> </div> </div>";
+module.exports = " <div class=\"<%= className %>\"> <div class=weui-mask></div> <div class=\"weui-half-screen-dialog weui-picker\"> <div class=weui-half-screen-dialog__hd> <div class=weui-half-screen-dialog__hd__side> <button class=\"weui-icon-btn weui-icon-btn_close weui-picker__btn closetext\">关闭</button> </div> <div class=weui-half-screen-dialog__hd__main> <strong class=weui-half-screen-dialog__title>标题</strong> </div> </div> <div class=weui-half-screen-dialog__bd> <div class=weui-picker__bd></div> </div> <div class=weui-half-screen-dialog__ft> <a href=javascript:; class=\"weui-btn weui-btn_primary weui-picker__btn primarytext\" id=weui-picker-confirm data-action=select>确定</a> </div> </div> </div> ";
 
 /***/ }),
 /* 7 */
@@ -1883,6 +1883,8 @@ function picker_picker() {
     container: "body",
     title: "",
     desc: "",
+    primarytext: "",
+    closetext: "",
     onChange: util.noop,
     onConfirm: util.noop,
     onClose: util.noop
@@ -1920,6 +1922,8 @@ function picker_picker() {
     util.getStyle($picker[0], "transform"); // 更改标题
 
     $picker.find(".weui-half-screen-dialog__title").html(defaults.title);
+    $picker.find(".primarytext").html(defaults.primarytext);
+    $picker.find(".closetext").html(defaults.closetext);
     $picker.find(".weui-mask").addClass("weui-animate-fade-in");
     $picker.find(".weui-picker").addClass("weui-animate-slide-up");
   }

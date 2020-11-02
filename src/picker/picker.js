@@ -194,6 +194,8 @@ function picker(...args) {
       container: "body",
       title: "",
       desc: "",
+      primarytext: "",
+      closetext: "",
       onChange: $.noop,
       onConfirm: $.noop,
       onClose: $.noop
@@ -232,6 +234,8 @@ function picker(...args) {
 
     // 更改标题
     $picker.find(".weui-half-screen-dialog__title").html(defaults.title)
+    $picker.find(".primarytext").html(defaults.primarytext)
+    $picker.find(".closetext").html(defaults.closetext)
     $picker.find(".weui-mask").addClass("weui-animate-fade-in")
     $picker.find(".weui-picker").addClass("weui-animate-slide-up")
   }
